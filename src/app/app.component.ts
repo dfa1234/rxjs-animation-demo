@@ -107,9 +107,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     from(this.imgs.toArray())
       .pipe(
-        concatMap(
-          (myImg, index) => this.duration(400 * (index + 1)),
-          (source) => this.moveDown(source)
+        concatMap((myImg, index) =>
+          this.duration(400 * (index + 1)).pipe(this.moveDown(myImg))
         )
       )
       .subscribe();
