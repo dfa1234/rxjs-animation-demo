@@ -44,9 +44,9 @@ import {
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChildren('myImg') imgs: QueryList<any>;
 
-  myRange$ = range(0, Number.POSITIVE_INFINITY).pipe(observeOn(scheduler));
+  myRange$ = range(0, Number.POSITIVE_INFINITY).pipe(observeOn(animationFrameScheduler));
 
-  myInterval$ = interval(0, Scheduler.animationFrame);
+  myInterval$ = interval(0, animationFrameScheduler);
 
   msElapsed = ({ scheduler = Scheduler.animationFrame, maxTimeInSecond = 5 }) =>
     defer(() => {
