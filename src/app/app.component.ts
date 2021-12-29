@@ -3,7 +3,6 @@ import {
   Component,
   OnInit,
   QueryList,
-  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import {
@@ -12,10 +11,9 @@ import {
   from,
   interval,
   map,
-  Observable,
   observeOn,
   range,
-  Scheduler,
+  animationFrameScheduler,
   takeWhile,
   tap,
 } from 'rxjs';
@@ -48,7 +46,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   myInterval$ = interval(0, animationFrameScheduler);
 
-  msElapsed = ({ scheduler = Scheduler.animationFrame, maxTimeInSecond = 5 }) =>
+  msElapsed = ({ scheduler = animationFrameScheduler, maxTimeInSecond = 5 }) =>
     defer(() => {
       const starting = scheduler.now();
       return interval(0, scheduler).pipe(
@@ -64,7 +62,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   log = (r) => console.log(r);
 
-  duration = (ms = 5000, scheduler = Scheduler.animationFrame) =>
+  duration = (ms = 5000, scheduler = animationFrameScheduler) =>
     defer(() => {
       const starting = scheduler.now();
       return interval(0, scheduler).pipe(
