@@ -99,7 +99,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     //moveDown(this.myImg)(duration(2000)).subscribe(r => console.log(r))
     //But better with "LET ME HAVE THE WHOLE OBSERVABLE"
     //duration(2000)
-    //  .let(this.moveDown(this.myImg))
+    //  .pipe(this.moveDown(this.myImg))
     //  .subscribe(log)
 
     //same thing but with multiple references:

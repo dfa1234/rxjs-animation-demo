@@ -1,1 +1,6 @@
 /* Add application styles & imports to this file! */
+
+html,
+body {
+  background-color: #34282c;
+}
