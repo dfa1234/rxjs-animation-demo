@@ -42,7 +42,9 @@ import {
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChildren('myImg') imgs: QueryList<any>;
 
-  myRange$ = range(0, Number.POSITIVE_INFINITY).pipe(observeOn(animationFrameScheduler));
+  myRange$ = range(0, Number.POSITIVE_INFINITY).pipe(
+    observeOn(animationFrameScheduler)
+  );
 
   myInterval$ = interval(0, animationFrameScheduler);
 
@@ -105,8 +107,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     from(this.imgs.toArray())
       .pipe(
-        concatMap((myImg, index) =>
-          this.duration(400 * (index + 1)).let(this.moveDown(myImg))
+        concatMap(
+          (myImg, index) => this.duration(400 * (index + 1)),
+          (source) => this.moveDown(source)
         )
       )
       .subscribe();
